@@ -11,6 +11,22 @@ resource "aws_instance" "myec2" {
     tags = {
         Name = "${var.component}-${var.env}"
     }
+    provisioner "remote-exec" {
+
+      connection {
+        host = self.public_ip
+        user = "root"
+        password = "DevOps321"
+      }
+
+      inline = [
+        "git clone https://github.com/shankarsrinivasnew/roboshop-ss.git",
+        "cd roboshop-ss",
+        "sudo bash ${var.component}.sh"
+
+      ]
+      
+    }
 
 }
 
