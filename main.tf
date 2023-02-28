@@ -3,6 +3,6 @@ module "mymodule" {
     for_each =var.component
     type = each.value["type"]
     component = each.value["name"]
-    env = development 
+    env = "development"
 }
 
