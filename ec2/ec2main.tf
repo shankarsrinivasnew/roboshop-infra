@@ -7,7 +7,7 @@ data "aws_ami" "myami" {
 resource "aws_instance" "myec2" {
     ami =  data.aws_ami.myami.image_id
     instance_type = var.type
-    vpc_security_group_ids = ["aws_security_group.allow_tls.id"]
+    vpc_security_group_ids = [aws_security_group.allow_tls.id]
     tags = {
         Name = "${var.component}-${var.env}"
     }
@@ -59,7 +59,7 @@ resource "aws_route53_record" "myr53" {
   name    = "${var.component}.sstech.store"
   type    = "A"
   ttl     = 30
-  records = ["aws_instance.myec2.private_ip"]
+  records = [aws_instance.myec2.private_ip]
 }
 
 
