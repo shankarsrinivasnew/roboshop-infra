@@ -5,3 +5,4 @@ module "mymodule" {
     component = each.value["name"]
     env = dev 
 }
+
