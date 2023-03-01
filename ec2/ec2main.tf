@@ -11,6 +11,10 @@ resource "aws_instance" "myec2" {
     tags = {
         Name = "${var.component}-${var.env}"
     }
+}
+
+resource "null_resource" "mynull_resource" {
+
     provisioner "remote-exec" {
 
       connection {
