@@ -4,6 +4,6 @@ module "mymodule" {
     type = each.value["type"]
     component = each.value["name"]
     env = "development"
-    password = var.component["password"]
+    password = try(each.value["password"], null)
 }
 
