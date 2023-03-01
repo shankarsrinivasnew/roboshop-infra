@@ -26,7 +26,7 @@ resource "null_resource" "mynull_resource" {
       inline = [
         "git clone https://github.com/shankarsrinivasnew/roboshop-ss.git",
         "cd roboshop-ss",
-        "sudo bash ${var.component}.sh"
+        "sudo bash ${var.component}.sh ${var.password}"
 
       ]
       
@@ -75,5 +75,9 @@ variable "component" {
   
 }
 variable "env" {
+  
+}
+
+variable "password" {
   
 }

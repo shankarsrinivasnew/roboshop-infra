@@ -15,6 +15,7 @@ variable "component" {
      mysql = {
       name = "mysql"
       type = "t3.micro"
+      password = "RoboShop@1"
     }
     user = {
       name = "user"
@@ -31,18 +32,23 @@ variable "component" {
     shipping = {
       name = "shipping"
       type = "t3.micro"
+      password = "RoboShop@1"
+
     }
     rabbitmq = {
       name = "rabbitmq"
       type = "t3.micro"
+      password = "roboshop123"
     }
     payment = {
       name = "payment"
       type = "t3.micro"
+      password = "roboshop123"
     }
     dispatch = {
       name = "dispatch"
       type = "t3.micro"
+      password = "roboshop123"
     }
   }
 }
