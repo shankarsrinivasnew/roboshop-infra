@@ -18,7 +18,7 @@ resource "null_resource" "mynull_resource" {
     provisioner "remote-exec" {
 
       connection {
-        host = self.public_ip
+        host = aws_instance.myec2.public_ip
         user = "root"
         password = "DevOps321"
       }
