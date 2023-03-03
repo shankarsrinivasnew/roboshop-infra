@@ -26,7 +26,7 @@ resource "null_resource" "mynull_resource" {
       }
 
       inline = [
-        "ansible-pull -i localhost, -U https://github.com/shankarsrinivasnew/roboshop-ansible.git role.yml -e role_name=${var.component}"
+        "ansible-pull -i localhost, -U https://github.com/shankarsrinivasnew/roboshop-ansible.git roboshop.yml -e role_name=${var.component}"
 
       ]
       
