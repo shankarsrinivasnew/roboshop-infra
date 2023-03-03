@@ -4,7 +4,7 @@ variable "component" {
       name = "frontend"
       type = "t3.micro"
     }
-    mongodb = {
+    /* mongodb = {
       name = "mongodb"
       type = "t3.micro"
     }
@@ -20,12 +20,12 @@ variable "component" {
     user = {
       name = "user"
       type = "t3.micro"
-    }
+    } */
     catalogue = {
       name = "catalogue"
       type = "t3.micro"
     }
-    cart = {
+    /* cart = {
       name = "cart"
       type = "t3.micro"
     }
@@ -49,6 +49,6 @@ variable "component" {
       name = "dispatch"
       type = "t3.micro"
       password = "roboshop123"
-    }
+    } */
   }
 }

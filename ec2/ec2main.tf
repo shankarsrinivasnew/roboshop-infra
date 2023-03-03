@@ -1,7 +1,9 @@
+data "aws_caller_identity" "current" {}
+
 data "aws_ami" "myami" {
   most_recent      = true
-  name_regex       = "Centos-8-DevOps-Practice"
-  owners           = ["973714476881"]
+  name_regex       = "devops-practice-with-ansible"
+  owners           = ["data.aws_caller_identity.current.account_id"]
 }
 
 resource "aws_instance" "myec2" {
@@ -24,9 +26,7 @@ resource "null_resource" "mynull_resource" {
       }
 
       inline = [
-        "git clone https://github.com/shankarsrinivasnew/roboshop-ss.git",
-        "cd roboshop-ss",
-        "sudo bash ${var.component}.sh ${var.password}"
+        "ansible-pull -i localhost, -U https://github.com/shankarsrinivasnew/roboshop-ansible.git -e role_name=${var.component}"
 
       ]
       
