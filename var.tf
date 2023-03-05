@@ -15,7 +15,7 @@ variable "component" {
      mysql = {
       name = "mysql"
       type = "t3.micro"
-      password = "RoboShop@1"
+    #  password = "RoboShop@1"
     }
     user = {
       name = "user"
