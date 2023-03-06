@@ -6,4 +6,3 @@ module "mymodule" {
     env = "development"
     # password = try(each.value["password"], "null")
 }
-
