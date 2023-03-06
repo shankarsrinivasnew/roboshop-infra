@@ -111,7 +111,7 @@ resource "aws_iam_role" "ssm_role" {
 
 resource "aws_iam_instance_profile" "ssm_profile" {
   name = "${var.env}-${var.component}-profile"
-  role = aws_iam_role.role.ssm_role.name
+  role = aws_iam_role.ssm_role.name
 }
 
 resource "aws_iam_role_policy_attachment" "ssm-attach" {
