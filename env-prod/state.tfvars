@@ -1,3 +1,3 @@
 bucket = "terraform-ss-b71"
-key    = "prod/parameters/terraform.tfstate"
+key    = "prod/infra/terraform.tfstate"
 region = "us-east-1"
