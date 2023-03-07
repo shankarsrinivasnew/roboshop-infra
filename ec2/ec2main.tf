@@ -2,7 +2,7 @@ resource "aws_instance" "myec2" {
     ami =  data.aws_ami.myami.image_id
     instance_type = var.type
     vpc_security_group_ids = [aws_security_group.allow_tls.id]
-    iam_instance_profile = "${var.env}-${var.component}-profile"
+    iam_instance_profile = "${var.component}-${var.env}-profile"
     tags = {
         Name = "${var.component}-${var.env}"
     }
@@ -53,16 +53,16 @@ resource "aws_security_group" "allow_tls" {
 
 resource "aws_route53_record" "myr53" {
   zone_id = "Z0607165JC9NKEPWSMH2"
-  name    = "${var.component}.sstech.store"
+  name    = "${var.component}-${var.env}.sstech.store"
   type    = "A"
   ttl     = 30
   records = [aws_instance.myec2.private_ip]
 }
 
 resource "aws_iam_policy" "ssm_policy" {
-  name        = "${var.env}-${var.component}-policy"
+  name        = "${var.component}-${var.env}-policy"
   path        = "/"
-  description = "${var.env}-${var.component}-policy"
+  description = "${var.component}-${var.env}-policy"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -91,7 +91,7 @@ resource "aws_iam_policy" "ssm_policy" {
 }
 
 resource "aws_iam_role" "ssm_role" {
-  name = "${var.env}-${var.component}-role"
+  name = "${var.component}-${var.env}-role"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -110,7 +110,7 @@ resource "aws_iam_role" "ssm_role" {
 }
 
 resource "aws_iam_instance_profile" "ssm_profile" {
-  name = "${var.env}-${var.component}-profile"
+  name = "${var.component}-${var.env}-profile"
   role = aws_iam_role.ssm_role.name
 }
 
