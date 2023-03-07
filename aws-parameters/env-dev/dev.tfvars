@@ -19,6 +19,6 @@ parameters = [
   { name = "dev.shipping.db_host", value = "mysql-dev.sstech.store", type = "String"},
   { name = "dev.user.mongo", value = "true", type = "String"},
   { name = "dev.user.redis_host", value= "redis-dev.sstech.store", type = "String"},
-  { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/users", type = "String"}
+  { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/users", type = "String"},
   { name = "dev.dispatch.ampq_host", value = "RABBITMQ-IP", type = "String"}
 ]
