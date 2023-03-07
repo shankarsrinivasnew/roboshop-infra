@@ -22,3 +22,7 @@ parameters = [
   { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/users", type = "String"},
   { name = "dev.dispatch.ampq_host", value = "RABBITMQ-IP", type = "String"}
 ]
+
+secrets = [
+  { name = "test3", value = "Hello SHANKAR", type = "SecureString" },
+]
