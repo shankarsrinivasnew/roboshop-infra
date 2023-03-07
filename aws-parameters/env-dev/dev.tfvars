@@ -14,10 +14,11 @@ parameters = [
   { name = "dev.payment.cart_port", value = "8080" , type = "String"},
   { name = "dev.payment.user_host", value = "user-dev.sstech.store", type = "String"},
   { name = "dev.payment.user_port", value = "8080", type = "String"},
-  { name = "dev.payment.AMQP_host", value = "rabbitmq-dev.sstech.store", type = "String"},
+  { name = "dev.payment.ampq_host", value = "rabbitmq-dev.sstech.store", type = "String"},
   { name = "dev.shipping.cart_endpoint", value = "cart-dev.sstech.store:8080", type = "String"},
   { name = "dev.shipping.db_host", value = "mysql-dev.sstech.store", type = "String"},
   { name = "dev.user.mongo", value = "true", type = "String"},
   { name = "dev.user.redis_host", value= "redis-dev.sstech.store", type = "String"},
   { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/users", type = "String"}
+  { name = "dev.dispatch.ampq_host", value = "RABBITMQ-IP", type = "String"}
 ]
