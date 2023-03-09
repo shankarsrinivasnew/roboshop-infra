@@ -5,6 +5,4 @@ module "mymodule" {
     component = each.value["name"]
     env = var.env
     monitor = try(each.value["monitor"], "false" )
-    
-    # password = try(each.value["password"], "null")
 }
