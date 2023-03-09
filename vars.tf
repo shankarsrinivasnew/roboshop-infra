@@ -1,3 +1,3 @@
 variable "component" {}
 variable "env" {}
-variable "monitor" {}
+/* variable "monitor" {} */

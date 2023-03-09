@@ -5,7 +5,7 @@ resource "aws_instance" "myec2" {
     iam_instance_profile = "${var.component}-${var.env}-profile"
     tags = {
       Name = "${var.component}-${var.env}"
-      Monitor = var.monitor? "yes": "no"
+      Monitor = var.monitor ? "yes" : "no"
     }
 }
 
