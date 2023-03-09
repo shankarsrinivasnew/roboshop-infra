@@ -15,7 +15,6 @@ component = {
   mysql = {
     name = "mysql"
     type = "t3.micro"
-    monitor = "true"
 
   }
   user = {
