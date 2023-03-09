@@ -4,5 +4,7 @@ module "mymodule" {
     type = each.value["type"]
     component = each.value["name"]
     env = var.env
+    monitor = try(var.each["monitor"], "false" )
+    
     # password = try(each.value["password"], "null")
 }
