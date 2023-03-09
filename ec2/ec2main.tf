@@ -5,11 +5,12 @@ resource "aws_instance" "myec2" {
     iam_instance_profile = "${var.component}-${var.env}-profile"
     tags = {
         Name = "${var.component}-${var.env}"
+        monitor = var.monitor? "yes": "no"
     }
 }
 
 resource "null_resource" "mynull_resource" {
-
+    depends_on = [aws_route53_record.myr53]
     provisioner "remote-exec" {
 
       connection {
