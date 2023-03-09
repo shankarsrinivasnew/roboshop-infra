@@ -4,5 +4,5 @@ module "mymodule" {
     type = each.value["type"]
     component = each.value["name"]
     env = var.env
-    monitor = try(each.value["monitor"], "false" )
+    monitor = try( each.value["monitor"], false )
 }
