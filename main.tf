@@ -15,4 +15,5 @@ module "myvpcm" {
     tags = var.tags
     public_subnets = each.value["public_subnets"]
     private_subnets = each.value["private_subnets"]
+    default_vpc_id = var.default_vpc_id
 }
