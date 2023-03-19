@@ -7,9 +7,9 @@
     monitor = try( each.value["monitor"], false )
 } */
 
-module "myvpc" {
+module "myvpcm" {
     source = "git::https://github.com/shankarsrinivasnew/tf-module-vpc.git"
     for_each =  var.vpc
-    cidr_block = each.value["vpc_cidr"]
+    vpc_cidr = each.value["vpc_cidr"]
   
 }
