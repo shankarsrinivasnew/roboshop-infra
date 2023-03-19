@@ -12,5 +12,5 @@ module "myvpcm" {
     for_each =  var.vpc
     vpc_cidr = each.value["vpc_cidr"]
     env = var.env
-  
+    tags = var.tags
 }
