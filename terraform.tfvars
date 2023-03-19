@@ -4,3 +4,5 @@ tags = {
   owner        = "ecom_bu"
   cost_center  = 1001
 }
+
+default_vpc_id = "vpc-0384ce2b07fcf4f76"
