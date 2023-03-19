@@ -106,13 +106,13 @@ vpc = {
       }
 
       db_az1 = {
-        name              = "app_az1"
+        name              = "db_az1"
         cidr_block        = "10.0.6.0/24"
         availability_zone = "us-east-1a"
       }
 
       db_az2 = {
-        name              = "app_az2"
+        name              = "db_az2"
         cidr_block        = "10.0.7.0/24"
         availability_zone = "us-east-1b"
       }
