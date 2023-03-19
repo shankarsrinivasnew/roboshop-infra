@@ -13,4 +13,8 @@ module "myvpcm" {
     vpc_cidr = each.value["vpc_cidr"]
     env = var.env
     tags = var.tags
+    public_subnets = each.value["public_subnets"]
+    private_subnets = each.value["private_subnets"]
+
+
 }
