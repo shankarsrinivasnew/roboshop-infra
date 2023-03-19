@@ -15,6 +15,4 @@ module "myvpcm" {
     tags = var.tags
     public_subnets = each.value["public_subnets"]
     private_subnets = each.value["private_subnets"]
-
-
 }
