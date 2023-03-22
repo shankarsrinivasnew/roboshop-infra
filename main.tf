@@ -75,10 +75,11 @@ module "elasticachem" {
 module "rabbitmqm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-rabbitmq.git"
   env    = var.env
+  tags   = var.tags
+
   for_each = var.tags
-  key   = each.key
-  value = each.value
-  tag   =var.tags
+  key      = each.key
+  value    = each.value
 
   subnet_ids = local.db_subnet_ids
 
