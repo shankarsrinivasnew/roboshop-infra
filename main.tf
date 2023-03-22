@@ -20,5 +20,5 @@ module "myvpcm" {
 }
 
 output "mylocalo" {
-  value = local.vpc
+  value = local.db_subnet_ids
 }
