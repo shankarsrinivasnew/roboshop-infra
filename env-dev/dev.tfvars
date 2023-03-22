@@ -157,8 +157,8 @@ elasticache = {
   }
 }
 
-rabbitmq ={
-  main ={
+rabbitmq = {
+  main = {
     instance_type = "t3.micro"
   }
 }
