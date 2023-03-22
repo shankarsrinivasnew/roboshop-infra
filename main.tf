@@ -73,7 +73,7 @@ module "elasticachem" {
 }
 
 module "rabbitmqm" {
-  source = "git::https://github.com/shankarsrinivasnew/tf-module-elasticache.git"
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-rabbitmq.git"
   env    = var.env
   tags   = var.tags
 
