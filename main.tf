@@ -18,3 +18,7 @@ module "myvpcm" {
     default_vpc_id = var.default_vpc_id
     default_route_table = var.default_route_table
 }
+
+output "dbid" {
+  value = locals.db_subnet_ids
+}
