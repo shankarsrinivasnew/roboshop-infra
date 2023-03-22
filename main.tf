@@ -19,6 +19,6 @@ module "myvpcm" {
     default_route_table = var.default_route_table
 }
 
-output "dbid" {
-  value = locals.db_subnet_ids
+output "myvpco" {
+  value = module.myvpcm
 }
