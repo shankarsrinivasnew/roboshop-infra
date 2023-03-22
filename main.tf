@@ -20,5 +20,5 @@ module "myvpcm" {
 }
 
 output "mylocal" {
-  value = locals.vpc
+  value = local.vpc
 }
