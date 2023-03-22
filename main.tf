@@ -77,12 +77,8 @@ module "rabbitmqm" {
   env    = var.env
   tags   = var.tags
 
-  for_each = var.tags
-  key      = each.key
-  value    = each.value
-
   subnet_ids = local.db_subnet_ids
 
-  #for_each      = var.rabbitmq
+  for_each      = var.rabbitmq
   instance_type = each.value["instance_type"]
 }
