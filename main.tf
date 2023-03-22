@@ -27,6 +27,7 @@ module "docdbm" {
   source     = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
   env        = var.env
   tags       = var.tags
+
   subnet_ids = local.db_subnet_ids
 
   for_each                = var.docdb
@@ -44,6 +45,7 @@ module "rdsm" {
   source     = "git::https://github.com/shankarsrinivasnew/tf-module-rds.git"
   env        = var.env
   tags       = var.tags
+
   subnet_ids = local.db_subnet_ids
 
   for_each                = var.rds
@@ -54,4 +56,18 @@ module "rdsm" {
   storage_encrypted       = each.value["storage_encrypted"]
   instance_count          = each.value["instance_count"]
   instance_class          = each.value["instance_class"]
+}
+
+module "elasticachem" {
+  source     = "git::https://github.com/shankarsrinivasnew/tf-module-elasticache.git"
+  env        = var.env
+  tags       = var.tags
+
+  subnet_ids = local.db_subnet_ids
+
+  for_each        = var.elasticache
+  engine          = each.value["engine"]
+  engine_version  = each.value["engine_version"]
+  node_type       = each.value["node_type"]
+  num_cache_nodes = each.value["num_cache_nodes"]
 }

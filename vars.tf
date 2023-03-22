@@ -11,3 +11,6 @@ variable "docdb" {
 variable "rds" {
   
 }
+variable "elasticache" {
+  
+}
