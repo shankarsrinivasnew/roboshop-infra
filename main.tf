@@ -78,6 +78,7 @@ module "rabbitmqm" {
   for_each = var.tags
   key   = each.key
   value = each.value
+  tag   =var.tags
 
   subnet_ids = local.db_subnet_ids
 
