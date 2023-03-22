@@ -3,6 +3,7 @@ git:
 	rm -rvf .terraform
 
 dev-plan: git
+
 	terraform init -backend-config=env-dev/state.tfvars
 	terraform plan -var-file=env-dev/dev.tfvars
 
