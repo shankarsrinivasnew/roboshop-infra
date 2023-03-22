@@ -1,4 +1,4 @@
 locals {
-  vpc = module.myvpcm["main"].private_subnets["db-az1"].id
+  vpc = module.myvpcm["main"].myoutsub_private["db-az1"].id
 }
 
