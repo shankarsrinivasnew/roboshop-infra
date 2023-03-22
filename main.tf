@@ -19,6 +19,6 @@ module "myvpcm" {
     default_route_table = var.default_route_table
 }
 
-output "myvpco" {
-  value = module.myvpcm
+output "mylocal" {
+  value = locals.vpc
 }
