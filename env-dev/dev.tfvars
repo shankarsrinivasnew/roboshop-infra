@@ -131,8 +131,19 @@ docdb = {
     preferred_backup_window = "07:00-09:00"
     skip_final_snapshot     = true
     storage_encrypted       = true
-    instance_count = 1
-    instance_class = "db.t3.medium"
+    instance_count          = 1
+    instance_class          = "db.t3.medium"
   }
 }
 
+rds = {
+  main = {
+    engine                  = "aurora-mysql"
+    engine_version          = "5.7.mysql_aurora.2.11.1"
+    backup_retention_period = 1
+    preferred_backup_window = "07:00-09:00"
+    storage_encrypted       = true
+    instance_count          = 1
+    instance_class          = "db.t3.small"
+  }
+}
