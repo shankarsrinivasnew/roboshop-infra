@@ -14,3 +14,6 @@ variable "rds" {
 variable "elasticache" {
   
 }
+variable "rabbitmq" {
+  
+}

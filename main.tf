@@ -24,9 +24,9 @@ module "myvpcm" {
 } */
 
 module "docdbm" {
-  source     = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
-  env        = var.env
-  tags       = var.tags
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
+  env    = var.env
+  tags   = var.tags
 
   subnet_ids = local.db_subnet_ids
 
@@ -42,9 +42,9 @@ module "docdbm" {
 }
 
 module "rdsm" {
-  source     = "git::https://github.com/shankarsrinivasnew/tf-module-rds.git"
-  env        = var.env
-  tags       = var.tags
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-rds.git"
+  env    = var.env
+  tags   = var.tags
 
   subnet_ids = local.db_subnet_ids
 
@@ -59,9 +59,9 @@ module "rdsm" {
 }
 
 module "elasticachem" {
-  source     = "git::https://github.com/shankarsrinivasnew/tf-module-elasticache.git"
-  env        = var.env
-  tags       = var.tags
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-elasticache.git"
+  env    = var.env
+  tags   = var.tags
 
   subnet_ids = local.db_subnet_ids
 
@@ -70,4 +70,15 @@ module "elasticachem" {
   engine_version  = each.value["engine_version"]
   node_type       = each.value["node_type"]
   num_cache_nodes = each.value["num_cache_nodes"]
+}
+
+module "rabbitmqm" {
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-elasticache.git"
+  env    = var.env
+  tags   = var.tags
+
+  subnet_ids = local.db_subnet_ids
+
+  for_each      = var.rabbitmq
+  instance_type = each.value["instance_type"]
 }
