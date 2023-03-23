@@ -98,6 +98,6 @@ module "albm" {
   name               = each.value["name"]
   load_balancer_type = each.value["load_balancer_type"]
   internal           = each.value["internal"]
-  subnet_ids         = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
+  subnets        = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
 
 }
