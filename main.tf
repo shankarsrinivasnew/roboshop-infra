@@ -27,6 +27,10 @@ module "myvpcm" {
   value = local.pub_subnets_ids
 } 
 
+ output "mylocalo3" {
+  value = local.vpc_subnets_ids
+} 
+
  module "docdbm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
   env    = var.env
