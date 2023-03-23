@@ -28,7 +28,7 @@ module "myvpcm" {
 } 
  */
 
-module "docdbm" {
+/* module "docdbm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
   env    = var.env
   tags   = var.tags
@@ -86,7 +86,7 @@ module "rabbitmqm" {
 
   for_each      = var.rabbitmq
   instance_type = each.value["instance_type"]
-}
+} */
 
 module "albm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-alb.git"
