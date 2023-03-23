@@ -98,7 +98,21 @@ module "albm" {
   name               = each.value["name"]
   load_balancer_type = each.value["load_balancer_type"]
   internal           = each.value["internal"]
-  subnets        = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
+  subnets            = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
 
 }
 
+module "asgm" {
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
+  env    = var.env
+  tags   = var.tags
+
+  for_each = var.apps
+
+  component        = each.value["component"]
+  instance_type    = each.value["instance_type"]
+  desired_capacity = each.value["desired_capacity"]
+  max_size         = each.value["max_size"]
+  min_size         = each.value["min_size"]
+  subnets          = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
+}
