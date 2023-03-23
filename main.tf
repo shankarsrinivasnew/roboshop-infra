@@ -19,11 +19,15 @@ module "myvpcm" {
   default_route_table = var.default_route_table
 }
 
-/* output "mylocalo" {
+ output "mylocalo" {
   value = local.db_subnet_ids
-} */
+} 
 
-module "docdbm" {
+ output "mylocalo2" {
+  value = local.pub_subnets_ids
+} 
+
+/* module "docdbm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
   env    = var.env
   tags   = var.tags
@@ -81,4 +85,4 @@ module "rabbitmqm" {
 
   for_each      = var.rabbitmq
   instance_type = each.value["instance_type"]
-}
+} */
