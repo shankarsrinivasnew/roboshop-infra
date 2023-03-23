@@ -19,19 +19,16 @@ module "myvpcm" {
   default_route_table = var.default_route_table
 }
 
- output "mylocalo" {
+/* output "mylocalo" {
   value = local.db_subnet_ids
 } 
 
  output "mylocalo2" {
   value = local.pub_subnets_ids
 } 
+ */
 
- output "mylocalo3" {
-  value = local.vpc_subnets_ids
-} 
-
- module "docdbm" {
+module "docdbm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
   env    = var.env
   tags   = var.tags
@@ -89,4 +86,18 @@ module "rabbitmqm" {
 
   for_each      = var.rabbitmq
   instance_type = each.value["instance_type"]
-} 
+}
+
+module "albm" {
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-alb.git"
+  env    = var.env
+  tags   = var.tags
+
+  for_each = var.alb
+
+  name               = each.value["subnet_name"]
+  load_balancer_type = each.value["load_balancer_type"]
+  internal           = each.value["internal"]
+  subnet_ids         = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
+
+}

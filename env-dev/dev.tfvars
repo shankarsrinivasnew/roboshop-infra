@@ -1,58 +1,58 @@
 /* component = {
   frontend = {
-    name = "frontend"
+    subnet_name = "frontend"
     type = "t3.micro"
     monitor = "true"
   }
   mongodb = {
-    name = "mongodb"
+    subnet_name = "mongodb"
     type = "t3.micro"
   }
   redis = {
-    name = "redis"
+    subnet_name = "redis"
     type = "t3.micro"
   }
   mysql = {
-    name = "mysql"
+    subnet_name = "mysql"
     type = "t3.micro"
 
   }
   user = {
-    name = "user"
+    subnet_name = "user"
     type = "t3.micro"
     monitor = "true"
 
   }
   catalogue = {
-    name = "catalogue"
+    subnet_name = "catalogue"
     type = "t3.micro"
     monitor = "true"
 
   }
   cart = {
-    name = "cart"
+    subnet_name = "cart"
     type = "t3.micro"
     monitor = "true"
 
   }
   shipping = {
-    name = "shipping"
+    subnet_name = "shipping"
     type = "t3.micro"
     monitor = "true"
 
   }
   rabbitmq = {
-    name = "rabbitmq"
+    subnet_name = "rabbitmq"
     type = "t3.micro"
   }
   payment = {
-    name = "payment"
+    subnet_name = "payment"
     type = "t3.micro"
     monitor = "true"
 
   }
   dispatch = {
-    name = "dispatch"
+    subnet_name = "dispatch"
     type = "t3.micro"
     monitor = "true"
 
@@ -68,13 +68,13 @@ vpc = {
 
     public_subnets = {
       public-az1 = {
-        name              = "public-az1"
+        subnet_name       = "public-az1"
         cidr_block        = "10.0.0.0/24"
         availability_zone = "us-east-1a"
       }
 
       public-az2 = {
-        name              = "public-az2"
+        subnet_name       = "public-az2"
         cidr_block        = "10.0.1.0/24"
         availability_zone = "us-east-1b"
       }
@@ -82,37 +82,37 @@ vpc = {
 
     private_subnets = {
       web-az1 = {
-        name              = "web-az1"
+        subnet_name       = "web-az1"
         cidr_block        = "10.0.2.0/24"
         availability_zone = "us-east-1a"
       }
 
       web-az2 = {
-        name              = "web-az2"
+        subnet_name       = "web-az2"
         cidr_block        = "10.0.3.0/24"
         availability_zone = "us-east-1b"
       }
 
       app-az1 = {
-        name              = "app-az1"
+        subnet_name       = "app-az1"
         cidr_block        = "10.0.4.0/24"
         availability_zone = "us-east-1a"
       }
 
       app-az2 = {
-        name              = "app-az2"
+        subnet_name       = "app-az2"
         cidr_block        = "10.0.5.0/24"
         availability_zone = "us-east-1b"
       }
 
       db-az1 = {
-        name              = "db-az1"
+        subnet_name       = "db-az1"
         cidr_block        = "10.0.6.0/24"
         availability_zone = "us-east-1a"
       }
 
       db-az2 = {
-        name              = "db-az2"
+        subnet_name       = "db-az2"
         cidr_block        = "10.0.7.0/24"
         availability_zone = "us-east-1b"
       }
@@ -160,5 +160,18 @@ elasticache = {
 rabbitmq = {
   main = {
     instance_type = "t3.micro"
+  }
+}
+
+alb = {
+  public = {
+    load_balancer_type = "application"
+    internal           = true
+    subnet_name        = "public"
+  }
+  private = {
+    load_balancer_type = "application"
+    internal           = false
+    subnet_name        = "private"
   }
 }
