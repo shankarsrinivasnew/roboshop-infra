@@ -27,7 +27,7 @@ module "myvpcm" {
   value = local.pub_subnets_ids
 } 
 
-/* module "docdbm" {
+ module "docdbm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
   env    = var.env
   tags   = var.tags
@@ -85,4 +85,4 @@ module "rabbitmqm" {
 
   for_each      = var.rabbitmq
   instance_type = each.value["instance_type"]
-} */
+} 
