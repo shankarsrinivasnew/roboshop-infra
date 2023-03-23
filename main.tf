@@ -7,7 +7,7 @@
     monitor = try( each.value["monitor"], false )
 } */
 
-/* module "myvpcm" {
+module "myvpcm" {
   source              = "git::https://github.com/shankarsrinivasnew/tf-module-vpc.git"
   for_each            = var.vpc
   vpc_cidr            = each.value["vpc_cidr"]
@@ -17,7 +17,7 @@
   private_subnets     = each.value["private_subnets"]
   default_vpc_id      = var.default_vpc_id
   default_route_table = var.default_route_table
-} */
+}
 
 /* output "mylocalo" {
   value = local.db_subnet_ids
@@ -88,7 +88,7 @@ module "rabbitmqm" {
   instance_type = each.value["instance_type"]
 } */
 
-module "albm" {
+/* module "albm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-alb.git"
   env    = var.env
   tags   = var.tags
@@ -115,4 +115,4 @@ module "asgm" {
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
   subnets          = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
-}
+} */
