@@ -168,12 +168,12 @@ alb = {
     load_balancer_type = "application"
     internal           = true
     name               = "public"
-    lb_subnet_ids      = "public_subnet_ids"
+    subnet_name        = "public_subnet_ids"
   }
   private = {
     load_balancer_type = "application"
     internal           = false
     name               = "private"
-    lb_subnet_ids      = "app_subnet_ids"
+    subnet_name        = "app_subnet_ids"
   }
 }
