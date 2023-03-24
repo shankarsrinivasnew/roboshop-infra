@@ -28,7 +28,7 @@ module "myvpcm" {
 } 
  */
 
- /* output "mylocalo3" {
+/* output "mylocalo3" {
    value = local.vpc_id
  } */
 
@@ -111,7 +111,7 @@ module "asgm" {
   env    = var.env
   tags   = var.tags
 
-  vpc_id = module.myvpcm["main"].myoutvpcid
+  vpc_id       = module.myvpcm["main"].myoutvpcid
   bastion_cidr = var.bastion_cidr
 
   for_each = var.apps
@@ -122,4 +122,5 @@ module "asgm" {
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
   subnets          = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
+  allow_app_to     = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
 }
