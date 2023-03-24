@@ -28,9 +28,9 @@ module "myvpcm" {
 } 
  */
 
- output "mylocalo3" {
+ /* output "mylocalo3" {
    value = local.vpc_id
- }
+ } */
 
 /* module "docdbm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
@@ -110,7 +110,7 @@ module "asgm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
   env    = var.env
   tags   = var.tags
-  
+
   vpc_id = module.myvpcm["main"].myoutvpcid
   bastion_cidr = var.bastion_cidr
 
