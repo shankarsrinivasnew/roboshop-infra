@@ -88,7 +88,7 @@ module "rabbitmqm" {
   instance_type = each.value["instance_type"]
 } */
 
-/* module "albm" {
+module "albm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-alb.git"
   env    = var.env
   tags   = var.tags
@@ -115,4 +115,4 @@ module "asgm" {
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
   subnets          = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
-} */
+}
