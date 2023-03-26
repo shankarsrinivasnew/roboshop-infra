@@ -170,12 +170,14 @@ alb = {
     internal           = false
     name               = "public"
     subnet_name        = "public"
+    allow_cidr         = ["0.0.0.0/0"]
   }
   private = {
     load_balancer_type = "application"
     internal           = true
     name               = "private"
     subnet_name        = "app"
+    allow_cidr         = ["10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24", "10.0.5.0/24"]
   }
 }
 

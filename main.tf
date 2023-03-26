@@ -96,6 +96,8 @@ module "albm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-alb.git"
   env    = var.env
   tags   = var.tags
+  vpc_id       = module.myvpcm["main"].myoutvpcid
+  
 
   for_each = var.alb
 
@@ -103,6 +105,7 @@ module "albm" {
   load_balancer_type = each.value["load_balancer_type"]
   internal           = each.value["internal"]
   subnets            = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
+  allow_cidr     = each.value["allow_cidr"]
 
 }
 
