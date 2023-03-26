@@ -14,4 +14,4 @@ dev-apply: git
 
 dev-destroy: 
 	terraform init -backend-config=env-dev/state.tfvars
-	terraform destroy -var-file=env-dev/dev.tfvars
+	terraform destroy -var-file=env-dev/dev.tfvars -auto-approve
