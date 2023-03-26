@@ -106,6 +106,7 @@ module "albm" {
   internal           = each.value["internal"]
   subnets            = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
   allow_cidr     = each.value["allow_cidr"]
+  
 
 }
 
@@ -127,6 +128,7 @@ module "asgm" {
   subnets          = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
   port             = each.value["port"]
   allow_app_to     = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
+  alb_dns_name   =  lookup(lookup(loopup(module.albm, each.value["alb"], null), "myalbout",null),"dns_name", null)
 }
 
 output "alb" {
