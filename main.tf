@@ -133,6 +133,6 @@ module "asgm" {
   alb_dns_name = lookup(lookup(lookup(module.albm, each.value["alb"], null), "myalbout", null), "dns_name", null)
 }
 
-/* output "alb" {
+output "alb" {
   value = module.albm
-} */
+}
