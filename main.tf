@@ -96,8 +96,8 @@ module "albm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-alb.git"
   env    = var.env
   tags   = var.tags
-  vpc_id       = module.myvpcm["main"].myoutvpcid
-  
+  vpc_id = module.myvpcm["main"].myoutvpcid
+
 
   for_each = var.alb
 
@@ -105,18 +105,19 @@ module "albm" {
   load_balancer_type = each.value["load_balancer_type"]
   internal           = each.value["internal"]
   subnets            = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
-  allow_cidr     = each.value["allow_cidr"]
-  
+  allow_cidr         = each.value["allow_cidr"]
+
 
 }
 
 module "asgm" {
-  source = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
-  env    = var.env
-  tags   = var.tags
-
-  vpc_id       = module.myvpcm["main"].myoutvpcid
+  source       = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
+  env          = var.env
+  tags         = var.tags
   bastion_cidr = var.bastion_cidr
+  dns_domain   = var.dns_domain
+
+  vpc_id = module.myvpcm["main"].myoutvpcid
 
   for_each = var.apps
 
@@ -125,10 +126,11 @@ module "asgm" {
   desired_capacity = each.value["desired_capacity"]
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
-  subnets          = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
   port             = each.value["port"]
-  allow_app_to     = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
-  alb_dns_name   =  lookup(lookup(loopup(module.albm, each.value["alb"], null), "myalbout",null),"dns_name", null)
+
+  subnets      = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
+  allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
+  alb_dns_name = lookup(lookup(loopup(module.albm, each.value["alb"], null), "myalbout", null), "dns_name", null)
 }
 
 output "alb" {
