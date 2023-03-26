@@ -127,12 +127,14 @@ module "asgm" {
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
   port             = each.value["port"]
+  priority         = each.value["listener_priority"]
 
   subnets      = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   alb_dns_name = lookup(lookup(lookup(module.albm, each.value["alb"], null), "myalbout", null), "dns_name", null)
+  listener_arn = lookup(lookup(lookup(module.albm, each.value["alb"], null), "myalblistenerout", null), "arn", null)
 }
 
-output "alb" {
+/* output "alb" {
   value = module.albm
-}
+} */
