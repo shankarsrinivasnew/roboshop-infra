@@ -130,5 +130,5 @@ module "asgm" {
 }
 
 output "alb" {
-  value = module.tf-module-alb
+  value = module.albm
 }
