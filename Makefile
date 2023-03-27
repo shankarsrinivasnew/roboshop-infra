@@ -10,7 +10,7 @@ dev-plan: git
 dev-apply: git
 	cd aws-parameters; make dev-apply
 	terraform init -backend-config=env-dev/state.tfvars
-	#terraform apply -var-file=env-dev/dev.tfvars -auto-approve
+	terraform apply -var-file=env-dev/dev.tfvars -auto-approve
 
 dev-destroy:
 	cd aws-parameters; make dev-destroy
