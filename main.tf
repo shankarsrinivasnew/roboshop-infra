@@ -141,3 +141,8 @@ module "asgm" {
 /* output "alb" {
   value = module.albm
 } */
+
+output "redis" {
+  value = module.elasticache
+  
+}
