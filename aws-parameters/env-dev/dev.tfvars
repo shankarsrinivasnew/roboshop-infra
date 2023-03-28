@@ -27,7 +27,7 @@ parameters = [
   
   { name = "dev.dispatch.amqp_host", value = "RABBITMQ-IP", type = "String" }
 
-#  done and useless items below for new aws services architecture
+#  notuseful and replaced parameters with new ssm paramaters of aws services architecture
 
   { name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/catalogue", type = "String" },
   
