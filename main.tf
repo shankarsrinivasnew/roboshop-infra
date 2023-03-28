@@ -143,6 +143,6 @@ module "asgm" {
 } */
 
 output "redis" {
-  value = module.elasticache
+  value = module.elasticachem
   
 }
