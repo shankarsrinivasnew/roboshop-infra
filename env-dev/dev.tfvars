@@ -165,7 +165,9 @@ elasticache = {
 
 rabbitmq = {
   main = {
-    instance_type = "t3.micro"
+    instance_type       = "t3.micro"
+    allow_db_to_subnets = "app"
+    ssm_parameters      = ["payment", "dispatch"]
   }
 }
 
