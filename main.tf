@@ -57,6 +57,8 @@ module "rdsm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-rds.git"
   env    = var.env
   tags   = var.tags
+  vpc_id = module.myvpcm["main"].myoutvpcid
+
 
   subnet_ids = local.db_subnet_ids
 
@@ -68,6 +70,9 @@ module "rdsm" {
   storage_encrypted       = each.value["storage_encrypted"]
   instance_count          = each.value["instance_count"]
   instance_class          = each.value["instance_class"]
+  allow_db_to_subnets     = lookup(local.subnet_cidr, each.value["allow_db_to_subnets"], null)
+
+
 }
 
 module "elasticachem" {

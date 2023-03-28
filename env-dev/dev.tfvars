@@ -148,6 +148,8 @@ rds = {
     storage_encrypted       = true
     instance_count          = 1
     instance_class          = "db.t3.small"
+    allow_db_to_subnets     = "app"
+
   }
 }
 
