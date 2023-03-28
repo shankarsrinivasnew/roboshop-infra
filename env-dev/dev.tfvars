@@ -153,10 +153,11 @@ rds = {
 
 elasticache = {
   main = {
-    engine          = "redis"
-    engine_version  = "6.x"
-    num_cache_nodes = 1
-    node_type       = "cache.t3.micro"
+    engine              = "redis"
+    engine_version      = "6.x"
+    num_cache_nodes     = 1
+    node_type           = "cache.t3.micro"
+    allow_db_to_subnets = "app"
   }
 }
 
@@ -195,6 +196,7 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 10
+    ssm_parameters      = ["docdb"]
 
   }
   cart = {
@@ -208,6 +210,7 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 11
+    ssm_parameters      = ["elasticache"]
   }
 
   user = {
@@ -221,6 +224,8 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 12
+    ssm_parameters      = ["docdb", "elasticache"]
+
 
   }
 
@@ -235,6 +240,8 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 13
+    ssm_parameters      = ["rds"]
+
 
 
   }
@@ -249,6 +256,7 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 14
+    ssm_parameters      = []
 
   }
   dispatch = {
@@ -262,6 +270,8 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 15
+    ssm_parameters      = []
+
 
   }
   frontend = {
@@ -275,6 +285,8 @@ apps = {
     allow_app_to_subnet = "public"
     alb                 = "public"
     listener_priority   = 9
+    ssm_parameters      = []
+
 
   }
 }

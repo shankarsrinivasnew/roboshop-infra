@@ -77,11 +77,13 @@ module "elasticachem" {
 
   subnet_ids = local.db_subnet_ids
 
-  for_each        = var.elasticache
-  engine          = each.value["engine"]
-  engine_version  = each.value["engine_version"]
-  node_type       = each.value["node_type"]
-  num_cache_nodes = each.value["num_cache_nodes"]
+  for_each            = var.elasticache
+  engine              = each.value["engine"]
+  engine_version      = each.value["engine_version"]
+  node_type           = each.value["node_type"]
+  num_cache_nodes     = each.value["num_cache_nodes"]
+  allow_db_to_subnets = lookup(local.subnet_cidr, each.value["allow_db_to_subnets"], null)
+
 }
 
 module "rabbitmqm" {
@@ -111,6 +113,7 @@ module "albm" {
   allow_cidr         = each.value["allow_cidr"]
 
 
+
 }
 
 module "asgm" {
@@ -131,6 +134,7 @@ module "asgm" {
   min_size          = each.value["min_size"]
   port_internal     = each.value["port_internal"]
   listener_priority = each.value["listener_priority"]
+  ssm_parameters    = each.value["ssm_parameters"]
 
   subnets             = lookup(local.asg_subnet_ids, each.value["subnet_name"], null)
   allow_app_to_subnet = lookup(local.subnet_cidr, each.value["allow_app_to_subnet"], null)
@@ -142,7 +146,7 @@ module "asgm" {
   value = module.albm
 } */
 
-output "redis" {
+/* output "redis" {
   value = module.elasticachem
   
-}
+} */
