@@ -40,15 +40,21 @@ parameters = [
 
 secrets = [
   { name = "test3", value = "Hello SHANKAR", type = "SecureString" },
+  
   { name = "dev.mysql.password", value = "RoboShop@1", type = "SecureString" },
+
   { name = "dev.payment.amqp_user", value = "roboshop", type = "SecureString" },
   { name = "dev.payment.amqp_pass", value = "roboshop123", type = "SecureString" },
+
   { name = "dev.rabbitmq.amqp_user", value = "roboshop", type = "SecureString" },
   { name = "dev.rabbitmq.amqp_pass", value = "roboshop123", type = "SecureString" },
+
   { name = "dev.dispatch.amqp_user", value = "roboshop", type = "SecureString" },
   { name = "dev.dispatch.amqp_pass", value = "roboshop123", type = "SecureString" },
+
   { name = "dev.docdb.user", value = "admin1", type = "SecureString" },
   { name = "dev.docdb.pass", value = "RoboShop1", type = "SecureString" },
+
   { name = "dev.rds.user", value = "admin1", type = "SecureString" },
   { name = "dev.rds.pass", value = "RoboShop1", type = "SecureString" }
 ]
