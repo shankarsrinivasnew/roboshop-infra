@@ -184,96 +184,96 @@ alb = {
 
 apps = {
   catalogue = {
-    component         = "catalogue"
-    instance_type     = "t3.micro"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 10
+    component           = "catalogue"
+    instance_type       = "t3.micro"
+    desired_capacity    = 1
+    max_size            = 4
+    min_size            = 1
+    subnet_name         = "app"
+    port_internal       = 8080
+    allow_app_to_subnet = "app"
+    alb                 = "private"
+    listener_priority   = 10
 
   }
   cart = {
-    component         = "cart"
-    instance_type     = "t3.micro"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 11
+    component           = "cart"
+    instance_type       = "t3.micro"
+    desired_capacity    = 1
+    max_size            = 4
+    min_size            = 1
+    subnet_name         = "app"
+    port_internal       = 8080
+    allow_app_to_subnet = "app"
+    alb                 = "private"
+    listener_priority   = 11
   }
 
   user = {
-    component         = "user"
-    instance_type     = "t3.micro"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 12
+    component           = "user"
+    instance_type       = "t3.micro"
+    desired_capacity    = 1
+    max_size            = 4
+    min_size            = 1
+    subnet_name         = "app"
+    port_internal       = 8080
+    allow_app_to_subnet = "app"
+    alb                 = "private"
+    listener_priority   = 12
 
   }
 
   shipping = {
-    component         = "shipping"
-    instance_type     = "t3.micro"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 13
+    component           = "shipping"
+    instance_type       = "t3.micro"
+    desired_capacity    = 1
+    max_size            = 4
+    min_size            = 1
+    subnet_name         = "app"
+    port_internal       = 8080
+    allow_app_to_subnet = "app"
+    alb                 = "private"
+    listener_priority   = 13
 
 
   }
   payment = {
-    component         = "payment"
-    instance_type     = "t3.micro"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 14
+    component           = "payment"
+    instance_type       = "t3.micro"
+    desired_capacity    = 1
+    max_size            = 4
+    min_size            = 1
+    subnet_name         = "app"
+    port_internal       = 8080
+    allow_app_to_subnet = "app"
+    alb                 = "private"
+    listener_priority   = 14
 
   }
   dispatch = {
-    component         = "dispatch"
-    instance_type     = "t3.micro"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "app"
-    port              = 8080
-    allow_app_to      = "app"
-    alb               = "private"
-    listener_priority = 15
+    component           = "dispatch"
+    instance_type       = "t3.micro"
+    desired_capacity    = 1
+    max_size            = 4
+    min_size            = 1
+    subnet_name         = "app"
+    port_internal       = 8080
+    allow_app_to_subnet = "app"
+    alb                 = "private"
+    listener_priority   = 15
 
   }
   frontend = {
-    component         = "frontend"
-    instance_type     = "t3.micro"
-    desired_capacity  = 1
-    max_size          = 4
-    min_size          = 1
-    subnet_name       = "web"
-    port              = 80
-    allow_app_to      = "public"
-    alb               = "public"
-    listener_priority = 9
+    component           = "frontend"
+    instance_type       = "t3.micro"
+    desired_capacity    = 1
+    max_size            = 4
+    min_size            = 1
+    subnet_name         = "web"
+    port_internal       = 80
+    allow_app_to_subnet = "public"
+    alb                 = "public"
+    listener_priority   = 9
 
   }
 }
