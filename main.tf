@@ -74,6 +74,8 @@ module "elasticachem" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-elasticache.git"
   env    = var.env
   tags   = var.tags
+  vpc_id = module.myvpcm["main"].myoutvpcid
+
 
   subnet_ids = local.db_subnet_ids
 
