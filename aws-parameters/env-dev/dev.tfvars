@@ -36,11 +36,11 @@ parameters = [
   
 ]
 
-### THIS IS NOT GOING TO BE THE PRACTICE IN COMPANIES, WE SHOULD NOT KEEP PASSWORDS IN GIT REPOS
+### BELOW IS NOT GOING TO BE THE PRACTICE IN COMPANIES, WE SHOULD NOT KEEP PASSWORDS IN GIT REPOS
 
 secrets = [
   { name = "test3", value = "Hello SHANKAR", type = "SecureString" },
-  
+
   { name = "dev.mysql.password", value = "RoboShop@1", type = "SecureString" },
 
   { name = "dev.payment.amqp_user", value = "roboshop", type = "SecureString" },
