@@ -19,7 +19,6 @@ parameters = [
   { name = "dev.user.redis_host", value = "redis-dev.sstech.store", type = "String" },
   { name = "dev.user.mongo", value = "true", type = "String" },
   { name = "dev.dispatch.amqp_host", value = "RABBITMQ-IP", type = "String" },
-#  notuseful and replaced parameters with new ssm paramaters of aws services architecture
   { name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/catalogue", type = "String" },
   { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/users", type = "String" }
 ]
