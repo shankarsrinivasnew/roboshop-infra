@@ -167,7 +167,6 @@ rabbitmq = {
   main = {
     instance_type       = "t3.micro"
     allow_db_to_subnets = "app"
-    ssm_parameters      = ["payment", "dispatch"]
   }
 }
 
@@ -260,7 +259,7 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 14
-    ssm_parameters      = []
+    ssm_parameters      = ["rabbitmq"]
 
   }
   dispatch = {
@@ -274,7 +273,7 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 15
-    ssm_parameters      = []
+    ssm_parameters      = ["rabbitmq"]
 
 
   }
