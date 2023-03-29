@@ -176,7 +176,7 @@ resource "aws_spot_instance_request" "load-runnerr" {
   ami                    = data.aws_ami.ownami.image_id
   instance_type          = "t3.micro"
   wait_for_fulfillment   = true
-  subnet_id = "subnet-0ae39aa246d2fe8a4"
+  subnet_id              = "subnet-0ae39aa246d2fe8a4"
   vpc_security_group_ids = ["allow-all"]
 
   tags = merge(
