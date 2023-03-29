@@ -128,6 +128,7 @@ module "albm" {
 }
 
 module "asgm" {
+  depends_on = [module.docdbm, module.rdsm, module.elasticachem, module.albm, module.rabbitmqm]
   source       = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
   env          = var.env
   tags         = var.tags
