@@ -93,8 +93,8 @@ module "elasticachem" {
 
 }
 
-module "load-runnerm" {
-  source = "git::https://github.com/shankarsrinivasnew/tf-module-load-runner.git"
+module "rabbitmqm" {
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-rabbitmq.git"
   env    = var.env
   tags   = var.tags
   vpc_id = module.myvpcm["main"].myoutvpcid
@@ -105,7 +105,7 @@ module "load-runnerm" {
 
   subnet_ids = local.db_subnet_ids
 
-  for_each            = var.load-runner
+  for_each            = var.rabbitmq
   instance_type       = each.value["instance_type"]
   allow_db_to_subnets = lookup(local.subnet_cidr, each.value["allow_db_to_subnets"], null)
 }
@@ -128,7 +128,7 @@ module "albm" {
 }
 
 module "asgm" {
-  depends_on      = [module.docdbm, module.rdsm, module.elasticachem, module.albm, module.load-runnerm]
+  depends_on      = [module.docdbm, module.rdsm, module.elasticachem, module.albm, module.rabbitmqm]
   source          = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
   env             = var.env
   tags            = var.tags
@@ -187,7 +187,7 @@ resource "aws_spot_instance_request" "load-runnerr" {
 
 
 resource "aws_ec2_tag" "name-tag" {
-  resource_id = aws_spot_instance_request.load-runnerr.spot_instance_id
+  resource_id = aws_spot_instance_request.load-runner.spot_instance_id
   key         = "Name"
   value       = "load-runner-${var.env}"
 
