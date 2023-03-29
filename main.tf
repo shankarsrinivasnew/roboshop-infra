@@ -164,7 +164,7 @@ module "asgm" {
   
 } */
 
-# Load runner , install roboshop-load-gen from tools
+# Below is Load runner , install roboshop-load-gen from tools
 
 data "aws_ami" "ownami" {
   most_recent = true
