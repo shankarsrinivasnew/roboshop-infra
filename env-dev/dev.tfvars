@@ -275,7 +275,6 @@ apps = {
     listener_priority   = 15
     ssm_parameters      = ["rabbitmq"]
 
-
   }
   frontend = {
     component           = "frontend"
