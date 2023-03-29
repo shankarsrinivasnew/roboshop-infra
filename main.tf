@@ -93,8 +93,8 @@ module "elasticachem" {
 
 }
 
-module "rabbitmqm" {
-  source = "git::https://github.com/shankarsrinivasnew/tf-module-rabbitmq.git"
+module "load-runnerm" {
+  source = "git::https://github.com/shankarsrinivasnew/tf-module-load-runner.git"
   env    = var.env
   tags   = var.tags
   vpc_id = module.myvpcm["main"].myoutvpcid
@@ -105,7 +105,7 @@ module "rabbitmqm" {
 
   subnet_ids = local.db_subnet_ids
 
-  for_each            = var.rabbitmq
+  for_each            = var.load-runner
   instance_type       = each.value["instance_type"]
   allow_db_to_subnets = lookup(local.subnet_cidr, each.value["allow_db_to_subnets"], null)
 }
@@ -128,7 +128,7 @@ module "albm" {
 }
 
 module "asgm" {
-  depends_on      = [module.docdbm, module.rdsm, module.elasticachem, module.albm, module.rabbitmqm]
+  depends_on      = [module.docdbm, module.rdsm, module.elasticachem, module.albm, module.load-runnerm]
   source          = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
   env             = var.env
   tags            = var.tags
@@ -163,3 +163,32 @@ module "asgm" {
   value = module.elasticachem
   
 } */
+
+# Load runner , install roboshop-load-gen from tools
+
+data "aws_ami" "ownami" {
+  most_recent = true
+  name_regex  = "devops-practice-with-ansible"
+  owners      = ["self"]
+}
+
+resource "aws_spot_instance_request" "load-runnerr" {
+  ami                    = data.aws_ami.ownami.image_id
+  instance_type          = var.instance_type
+  wait_for_fulfillment   = true
+  vpc_security_group_ids = ["allow-all"]
+
+  tags = merge(
+    var.tags,
+    { Name = "${var.env}-load-runner" }
+  )
+
+}
+
+
+resource "aws_ec2_tag" "name-tag" {
+  resource_id = aws_spot_instance_request.load-runnerr.spot_instance_id
+  key         = "Name"
+  value       = "load-runner-${var.env}"
+
+}
