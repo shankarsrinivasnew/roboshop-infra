@@ -60,9 +60,10 @@
   }
 } */
 
-env          = "dev"
-bastion_cidr = ["172.31.12.67/32"]
-dns_domain   = "sstech.store"
+env             = "dev"
+bastion_cidr    = ["172.31.12.67/32"]
+prometheus_cidr = ["172.31.7.2"]
+dns_domain      = "sstech.store"
 
 vpc = {
   main = {

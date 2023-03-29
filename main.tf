@@ -128,12 +128,13 @@ module "albm" {
 }
 
 module "asgm" {
-  depends_on = [module.docdbm, module.rdsm, module.elasticachem, module.albm, module.rabbitmqm]
-  source       = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
-  env          = var.env
-  tags         = var.tags
-  bastion_cidr = var.bastion_cidr
-  dns_domain   = var.dns_domain
+  depends_on      = [module.docdbm, module.rdsm, module.elasticachem, module.albm, module.rabbitmqm]
+  source          = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
+  env             = var.env
+  tags            = var.tags
+  bastion_cidr    = var.bastion_cidr
+  prometheus_cidr = var.prometheus_cidr
+  dns_domain      = var.dns_domain
 
   vpc_id = module.myvpcm["main"].myoutvpcid
 
