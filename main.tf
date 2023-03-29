@@ -187,7 +187,7 @@ resource "aws_spot_instance_request" "load-runnerr" {
 
 
 resource "aws_ec2_tag" "name-tag" {
-  resource_id = aws_spot_instance_request.load-runner.spot_instance_id
+  resource_id = aws_spot_instance_request.load-runnerr.spot_instance_id
   key         = "Name"
   value       = "load-runner-${var.env}"
 
