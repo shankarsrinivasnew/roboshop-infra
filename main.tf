@@ -125,8 +125,6 @@ module "albm" {
   subnets            = lookup(local.lb_subnet_ids, each.value["subnet_name"], null)
   allow_cidr         = each.value["allow_cidr"]
 
-
-
 }
 
 module "asgm" {

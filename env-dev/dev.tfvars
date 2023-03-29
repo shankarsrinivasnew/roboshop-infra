@@ -259,7 +259,7 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 14
-    ssm_parameters      = ["rabbitmq"]
+    ssm_parameters      = []
 
   }
   dispatch = {
@@ -273,7 +273,7 @@ apps = {
     allow_app_to_subnet = "app"
     alb                 = "private"
     listener_priority   = 15
-    ssm_parameters      = ["rabbitmq"]
+    ssm_parameters      = []
 
   }
   frontend = {
