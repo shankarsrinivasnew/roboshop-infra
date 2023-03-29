@@ -174,7 +174,7 @@ data "aws_ami" "ownami" {
 
 resource "aws_spot_instance_request" "load-runnerr" {
   ami                    = data.aws_ami.ownami.image_id
-  instance_type          = var.instance_type
+  instance_type          = "t3.micro"
   wait_for_fulfillment   = true
   vpc_security_group_ids = ["allow-all"]
 
