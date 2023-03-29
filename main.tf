@@ -108,7 +108,6 @@ module "rabbitmqm" {
   for_each            = var.rabbitmq
   instance_type       = each.value["instance_type"]
   allow_db_to_subnets = lookup(local.subnet_cidr, each.value["allow_db_to_subnets"], null)
-  ssm_parameters      = each.value["ssm_parameters"]
 }
 
 module "albm" {
