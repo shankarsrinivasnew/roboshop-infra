@@ -166,15 +166,10 @@ module "asgm" {
 
 # Below is Load runner , install roboshop-load-gen from tools
 
-data "aws_ami" "ownami" {
-  most_recent = true
-  name_regex  = "devops-practice-with-ansible"
-  owners      = ["self"]
-}
 
 resource "aws_spot_instance_request" "load-runnerr" {
   ami                    = data.aws_ami.ownami.image_id
-  instance_type          = "t3.micro"
+  instance_type          = "t3.medium"
   wait_for_fulfillment   = true
   subnet_id              = "subnet-0ae39aa246d2fe8a4"
   vpc_security_group_ids = ["sg-07b838b130d44ebf7"]
@@ -186,6 +181,26 @@ resource "aws_spot_instance_request" "load-runnerr" {
 
 }
 
+resource "null_resource" "load-runner" {
+  triggers = {
+    abc = aws_spot_instance_request.load-runnerr.public_ip
+  }
+  
+  provisioner "remote_executor" {
+    connection {
+      host = aws_spot_instance_request.load-runnerr.public_ip
+      user = "root"
+      password = data.aws_ssm_parameter.ssh_pass.value
+    }
+    inline = [
+      "curl -s -L https://get.docker.com | bash",
+      "systemctl enable docker",
+      "systemctl start docker",
+      "docker pull robotshop/rs-load"
+    ]
+    
+  }
+}
 
 resource "aws_ec2_tag" "name-tag" {
   resource_id = aws_spot_instance_request.load-runnerr.spot_instance_id
