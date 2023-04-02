@@ -185,11 +185,11 @@ resource "null_resource" "load-runner" {
   triggers = {
     abc = aws_spot_instance_request.load-runnerr.public_ip
   }
-  
-  provisioner "remote_executor" {
+
+  provisioner "remote_exec" {
     connection {
-      host = aws_spot_instance_request.load-runnerr.public_ip
-      user = "root"
+      host     = aws_spot_instance_request.load-runnerr.public_ip
+      user     = "root"
       password = data.aws_ssm_parameter.ssh_pass.value
     }
     inline = [
@@ -198,7 +198,7 @@ resource "null_resource" "load-runner" {
       "systemctl start docker",
       "docker pull robotshop/rs-load"
     ]
-    
+
   }
 }
 
