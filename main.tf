@@ -186,7 +186,7 @@ resource "null_resource" "load-runner" {
     abc = aws_spot_instance_request.load-runnerr.public_ip
   }
 
-  provisioner "remote_exec" {
+  provisioner "remote-exec" {
     connection {
       host     = aws_spot_instance_request.load-runnerr.public_ip
       user     = "root"
