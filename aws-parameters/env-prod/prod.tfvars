@@ -38,5 +38,7 @@ secrets = [
   { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/users", type = "String" },
   { name = "dev.mysql.password", value = "RoboShop@1", type = "SecureString" } */
 
+
+
          
   
