@@ -18,7 +18,7 @@ variable "secrets" {}
 
 resource "aws_ssm_parameter" "jenkins_user" {
   name = "jenkins_user"
-  type = "string"
+  type = "String"
   value = "admin"
 }
 
