@@ -16,14 +16,25 @@ resource "aws_ssm_parameter" "secret" {
 
 variable "secrets" {}
 
-resource "aws_ssm_parameter" "jenkins_user" {
-  name = "jenkins_user"
-  type = "String"
+
+resource "aws_ssm_parameter" "cicd" {
+  count = length(var.cicd)
+  name  = var.cicd[count.index].name
+  type  = var.cicd[count.index].type
+  value = var.cicd[count.index].value
+
+}
+
+variable "cicd" {}
+
+/* resource "aws_ssm_parameter" "jenkins_user" {
+  name  = "jenkins_user"
+  type  = "String"
   value = "admin"
 }
 
 resource "aws_ssm_parameter" "jenkins_pass" {
-  name = "jenkins_pass"
-  type = "SecureString"
+  name  = "jenkins_pass"
+  type  = "SecureString"
   value = "admin123"
-}
+} */
