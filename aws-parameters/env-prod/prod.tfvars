@@ -44,6 +44,8 @@ cicd = [
   { name = "jenkins_pass", value = "admin123", type = "SecureString" },
   { name = "/sonarcube/user", value = "admin", type = "String" },
   { name = "/sonarcube/pass", value = "admin123", type = "SecureString" }
+  { name = "/sonar_user", value = "admin", type = "String" },
+  { name = "/sonar_pass", value = "admin123", type = "SecureString" }
 ]
 
 
