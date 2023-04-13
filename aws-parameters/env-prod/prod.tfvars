@@ -44,7 +44,14 @@ cicd = [
   { name = "/sonarcube/user", value = "admin", type = "String" },
   { name = "/sonarcube/pass", value = "admin123", type = "SecureString" },
   { name = "prod.nexus_user", value = "admin", type = "String" },
-  { name = "prod.nexus_pass", value = "admin123", type = "SecureString" }
+  { name = "prod.nexus_pass", value = "admin123", type = "SecureString" },
+  { name = "prod.cart_app_version", value = "1.0.0", type = "String" },
+  { name = "prod.catalogue_app_version", value = "1.0.0", type = "String" },
+  { name = "prod.user_app_version", value = "1.0.0", type = "String" },
+  { name = "prod.shipping_app_version", value = "1.0.0", type = "String" },
+  { name = "prod.payment_app_version", value = "1.0.0", type = "String" },
+  { name = "prod.dispatch_app_version", value = "1.0.0", type = "String" },
+  { name = "prod.frontend_app_version", value = "1.0.0", type = "String" },
 ]
 
 
