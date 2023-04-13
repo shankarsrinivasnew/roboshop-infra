@@ -32,7 +32,7 @@ module "myvpcm" {
    value = local.vpc_id
  } */
 
-module "docdbm" {
+/* module "docdbm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
   env    = var.env
   tags   = var.tags
@@ -108,7 +108,7 @@ module "rabbitmqm" {
   for_each            = var.rabbitmq
   instance_type       = each.value["instance_type"]
   allow_db_to_subnets = lookup(local.subnet_cidr, each.value["allow_db_to_subnets"], null)
-}
+} */
 
 module "albm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-alb.git"
@@ -128,7 +128,7 @@ module "albm" {
 }
 
 module "asgm" {
-  depends_on      = [module.docdbm, module.rdsm, module.elasticachem, module.albm, module.rabbitmqm]
+  depends_on      = [module.myvpcm, module.docdbm, module.rdsm, module.elasticachem, module.albm, module.rabbitmqm]
   source          = "git::https://github.com/shankarsrinivasnew/tf-module-app.git"
   env             = var.env
   tags            = var.tags
@@ -167,7 +167,7 @@ module "asgm" {
 # Below is Load runner , install roboshop-load-gen from tools
 
 
-resource "aws_spot_instance_request" "load-runnerr" {
+/* resource "aws_spot_instance_request" "load-runnerr" {
   ami                    = data.aws_ami.ownami.image_id
   instance_type          = "t3.medium"
   wait_for_fulfillment   = true
@@ -207,4 +207,4 @@ resource "aws_ec2_tag" "name-tag" {
   key         = "Name"
   value       = "load-runner-${var.env}"
 
-}
+} */
