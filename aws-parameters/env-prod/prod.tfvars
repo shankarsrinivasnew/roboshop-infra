@@ -41,8 +41,8 @@ secrets = [
 cicd = [
   { name = "jenkins_user", value = "admin", type = "String" },
   { name = "jenkins_pass", value = "admin123", type = "SecureString" },
-  { name = "/sonarcube/user", value = "admin", type = "String" },
-  { name = "/sonarcube/pass", value = "admin123", type = "SecureString" },
+  { name = "prod.sonarcube_user", value = "admin", type = "String" },
+  { name = "prod.sonarcube_pass", value = "admin123", type = "SecureString" },
   { name = "prod.nexus_user", value = "admin", type = "String" },
   { name = "prod.nexus_pass", value = "admin123", type = "SecureString" },
   { name = "prod.cart_app_version", value = "1.0.0", type = "String" },
