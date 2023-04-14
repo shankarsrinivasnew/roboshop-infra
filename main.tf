@@ -168,6 +168,7 @@ module "asgm" {
 
 
 resource "aws_spot_instance_request" "load-runnerr" {
+  depends_on             = [module.myvpcm]
   ami                    = data.aws_ami.ownami.image_id
   instance_type          = "t3.medium"
   wait_for_fulfillment   = true
@@ -182,6 +183,7 @@ resource "aws_spot_instance_request" "load-runnerr" {
 }
 
 resource "null_resource" "load-runner" {
+  depends_on = [module.myvpcm, aws_spot_instance_request.load-runnerr]
   triggers = {
     abc = aws_spot_instance_request.load-runnerr.public_ip
   }
