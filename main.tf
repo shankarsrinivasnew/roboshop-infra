@@ -94,10 +94,11 @@ module "elasticachem" {
 }
 
 module "rabbitmqm" {
-  source = "git::https://github.com/shankarsrinivasnew/tf-module-rabbitmq.git"
-  env    = var.env
-  tags   = var.tags
-  vpc_id = module.myvpcm["main"].myoutvpcid
+  depends_on = [module.myvpcm]
+  source     = "git::https://github.com/shankarsrinivasnew/tf-module-rabbitmq.git"
+  env        = var.env
+  tags       = var.tags
+  vpc_id     = module.myvpcm["main"].myoutvpcid
 
   bastion_cidr = var.bastion_cidr
   dns_domain   = var.dns_domain
