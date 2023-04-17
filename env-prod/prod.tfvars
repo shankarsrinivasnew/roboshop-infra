@@ -176,7 +176,7 @@ apps = {
     instance_type       = "t3.medium"
     desired_capacity    = 2
     max_size            = 10
-    min_size            = 2
+    min_size            = 3
     subnet_name         = "app"
     port_internal       = 8080
     allow_app_to_subnet = "app"
@@ -189,7 +189,7 @@ apps = {
   }
   payment = {
     component           = "payment"
-    instance_type       = "t3.micro"
+    instance_type       = "t3.small"
     desired_capacity    = 2
     max_size            = 10
     min_size            = 2
@@ -217,7 +217,7 @@ apps = {
   }
   frontend = {
     component           = "frontend"
-    instance_type       = "t3.micro"
+    instance_type       = "t3.small"
     desired_capacity    = 2
     max_size            = 10
     min_size            = 2
