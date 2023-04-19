@@ -199,7 +199,8 @@ resource "null_resource" "load-runner" {
       "curl -s -L https://get.docker.com | bash",
       "systemctl enable docker",
       "systemctl start docker",
-      "docker pull robotshop/rs-load"
+      "docker pull robotshop/rs-load",
+      "set-hostname load-runner"
     ]
 
   }
