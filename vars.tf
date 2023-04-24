@@ -18,19 +18,18 @@ variable "rabbitmq" {
 
 }
 variable "alb" {
-  
+
 }
 variable "apps" {
-  
+
 }
 variable "bastion_cidr" {
-  
+
 }
 
 variable "prometheus_cidr" {
-  
+
 }
 
 variable "dns_domain" {
-  
 }

@@ -32,7 +32,7 @@ module "myvpcm" {
    value = local.vpc_id
  } */
 
-module "docdbm" {
+/* module "docdbm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-docdb.git"
   env    = var.env
   tags   = var.tags
@@ -154,7 +154,7 @@ module "asgm" {
   allow_app_to_subnet = lookup(local.subnet_cidr, each.value["allow_app_to_subnet"], null)
   alb_dns_name        = lookup(lookup(lookup(module.albm, each.value["alb"], null), "myalbout", null), "dns_name", null)
   listener_arn        = lookup(lookup(lookup(module.albm, each.value["alb"], null), "myalblistenerout", null), "arn", null)
-}
+} */
 
 /* output "alb" {
   value = module.albm
@@ -168,7 +168,7 @@ module "asgm" {
 # Below is Load runner , install roboshop-load-gen from tools
 
 
-resource "aws_spot_instance_request" "load-runnerr" {
+/* resource "aws_spot_instance_request" "load-runnerr" {
   depends_on             = [module.myvpcm]
   ami                    = data.aws_ami.ownami.image_id
   instance_type          = "t3.medium"
@@ -211,4 +211,36 @@ resource "aws_ec2_tag" "name-tag" {
   key         = "Name"
   value       = "load-runner-${var.env}"
 
+} */
+
+module "minikube" {
+  source = "github.com/scholzj/terraform-aws-minikube"
+
+  aws_region        = "us-east-1"
+  cluster_name      = "minikube"
+  aws_instance_type = "t3.medium"
+  ssh_public_key    = "~/.ssh/id_rsa.pub"
+  aws_subnet_id     = lookup(local.lb_subnet_ids, public, null)[0]
+  //ami_image_id        = data.aws_ami.ami.id
+  hosted_zone         = "sstech.store"
+  hosted_zone_private = false
+
+  tags = {
+    Application = "Minikube"
+  }
+
+  addons = [
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/heapster.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"
+  ]
+}
+
+output "MINIKUBE_SERVER" {
+  value = "ssh centos@${module.minikube.public_ip}"
+}
+
+output "KUBE_CONFIG" {
+  value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
 }
