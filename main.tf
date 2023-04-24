@@ -220,7 +220,7 @@ module "minikube" {
   cluster_name      = "minikube"
   aws_instance_type = "t3.medium"
   ssh_public_key    = "~/.ssh/id_rsa.pub"
-  aws_subnet_id     = lookup(local.lb_subnet_ids, public, null)[0]
+  aws_subnet_id     = lookup(local.lb_subnet_ids, "public", null)[0]
   //ami_image_id        = data.aws_ami.ami.id
   hosted_zone         = "sstech.store"
   hosted_zone_private = false
