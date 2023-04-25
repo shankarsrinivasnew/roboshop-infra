@@ -111,12 +111,6 @@ module "rabbitmqm" {
   allow_db_to_subnets = lookup(local.subnet_cidr, each.value["allow_db_to_subnets"], null)
 }
 
-resource "aws_ec2_tag" "name-tag" {
-  resource_id = aws_spot_instance_request.rabbitmqr.spot_instance_id
-  key         = "Name"
-  value       = "rabbitmq-${var.env}"
-}
-
 /*module "albm" {
   source = "git::https://github.com/shankarsrinivasnew/tf-module-alb.git"
   env    = var.env
