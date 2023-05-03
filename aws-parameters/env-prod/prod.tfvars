@@ -47,7 +47,7 @@ secrets = [
   { name = "prod.payment.amqp_host", value = "rabbitmq-prod.sstech.store", type = "String" },
   { name = "prod.shipping.cart_endpoint", value = "cart-prod.sstech.store:80", type = "String" },
   { name = "prod.user.mongo", value = "true", type = "String" },
-  { name = "prod.dispatch.amqp_host", value = "rabbitmq-prod.sstech.store", type = "String" } * /
+  { name = "prod.dispatch.amqp_host", value = "rabbitmq-prod.sstech.store", type = "String" } */
 
 cicd = [
   { name = "jenkins_user", value = "admin", type = "String" },
