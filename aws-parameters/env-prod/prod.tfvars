@@ -33,10 +33,10 @@ secrets = [
 
 /* { name = "dev.cart.redis_host", value = "redis-dev.sstech.store", type = "String" },
   { name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/catalogue", type = "String" },
-  { name = "dev.shipping.db_host", value = "mysql-dev.sstech.store", type = "String" }, 
+  { name = "dev.shipping.db_host", value = "mysql-dev.sstech.store", type = "String" },
   { name = "dev.user.redis_host", value = "redis-dev.sstech.store", type = "String" },
   { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.sstech.store:27017/users", type = "String" },
-  { name = "dev.mysql.password", value = "RoboShop@1", type = "SecureString" } 
+  { name = "dev.mysql.password", value = "RoboShop@1", type = "SecureString" },
   { name = "prod.cart.catalogue_host", value = "catalogue-prod.sstech.store", type = "String" },
   { name = "prod.cart.catalogue_port", value = "80", type = "String" },
   { name = "prod.catalogue.mongo", value = "true", type = "String" },
